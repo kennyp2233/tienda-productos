@@ -19,10 +19,10 @@ if (isset($_COOKIE['usuario']) && isset($_COOKIE['contrasena']) && isset($_COOKI
     <form method="POST" action="panel_principal.php">
         <fieldset>
             <p>Usuario:</p>
-            <input type="text" name="usuario" placeholder="Usuario" required>
+            <input type="text" name="usuario" placeholder="Usuario" value="<?php echo $usuario ?>" required>
             <p>Contraseña:</p>
-            <input type="password" name="contrasena" placeholder="Contraseña" required>
-            <p>Recordarme: <input type="checkbox" name="recordarme" value="1">
+            <input type="password" name="contrasena" placeholder="Contraseña" value="<?php echo $contrasena ?>" required>
+            <p>Recordarme: <input type="checkbox" name="recordarme" value="1" <?php echo ($recordarme) ? "checked" : "" ?>>
             </p>
             <input type="submit" name="login" value="Iniciar sesión">
         </fieldset>

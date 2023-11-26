@@ -29,20 +29,21 @@ if ((isset($_POST) && !empty($_POST)) || (isset($_COOKIE) && !empty($_COOKIE))) 
         $categorias = file_get_contents("categorias_es.txt");
     }
 
+    if (isset($_COOKIE['usuario']) && isset($_COOKIE['contrasena'])) {
+        $usuario = $_COOKIE['usuario'];
+        $contrasena = $_COOKIE['contrasena'];
+    }
+
     if (isset($_GET['cerrar'])) {
         if ($_GET['cerrar'] == 1) {
+            /*
             if (isset($_COOKIE)) {
                 foreach ($_COOKIE as $key => $value) {
                     setcookie($key, "", time() - 3600);
                 }
-            }
+            }*/
             header('Location: index.php');
         }
-    }
-
-    if (isset($_COOKIE['usuario']) && isset($_COOKIE['contrasena'])) {
-        $usuario = $_COOKIE['usuario'];
-        $contrasena = $_COOKIE['contrasena'];
     }
 } else {
     header('Location: index.php');
