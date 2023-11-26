@@ -1,5 +1,11 @@
 <?php
-
+$usuario = $contrasena = "";
+$recordarme = false;
+if (isset($_COOKIE['usuario']) && isset($_COOKIE['contrasena']) && isset($_COOKIE['recordarme'])) {
+    $usuario = $_COOKIE['usuario'];
+    $contrasena = $_COOKIE['contrasena'];
+    $recordarme = $_COOKIE['recordarme'];
+}
 ?>
 <html lang="en">
 
