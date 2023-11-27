@@ -36,14 +36,14 @@ if ((isset($_POST) && !empty($_POST)) || (isset($_COOKIE['usuario']))) {
     }
 
     if (isset($_GET['cerrar'])) {
-        if ($_GET['cerrar'] == 1) {
+        if ($_GET['cerrar'] == 1 && !isset($_COOKIE['recordarme'])) {
             if (isset($_COOKIE)) {
                 foreach ($_COOKIE as $key => $value) {
                     setcookie($key, "", time() - 3600);
                 }
             }
-            header('Location: index.php');
         }
+        header('Location: index.php');
     }
 } else {
     header('Location: index.php');
