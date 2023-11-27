@@ -2,12 +2,13 @@
 $categorias = "";
 $usuario = $contrasena = $lang = "";
 $recordarme = false;
-if ((isset($_POST) && !empty($_POST)) || (isset($_COOKIE) && !empty($_COOKIE))) {
+
+if ((isset($_POST) && !empty($_POST)) || (isset($_COOKIE['usuario']))) {
+    $usuario = $_POST['usuario'] ?? $_COOKIE['usuario'];
     if (isset($_POST['usuario']) && isset($_POST['contrasena'])) {
-        $usuario = $_POST['usuario'];
         $contrasena = $_POST['contrasena'];
+        setcookie('usuario', $usuario, 0);
         if (isset($_POST['recordarme'])) {
-            setcookie('usuario', $usuario, 0);
             setcookie('contrasena', $contrasena, 0);
             setcookie('recordarme', true, 0);
         } else {
@@ -36,12 +37,11 @@ if ((isset($_POST) && !empty($_POST)) || (isset($_COOKIE) && !empty($_COOKIE))) 
 
     if (isset($_GET['cerrar'])) {
         if ($_GET['cerrar'] == 1) {
-            /*
             if (isset($_COOKIE)) {
                 foreach ($_COOKIE as $key => $value) {
                     setcookie($key, "", time() - 3600);
                 }
-            }*/
+            }
             header('Location: index.php');
         }
     }
